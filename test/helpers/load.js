@@ -51,4 +51,5 @@ require('../../src/foam/dao/ArraySink.js');
 require('../../src/foam/dao/ArrayDAO.js');
 require('../../src/foam/core/property/Unsafe.js');
 require('../../src/foam/pattern/Singleton.js');
+require('../../src/foam/pattern/Multiton.js');
 require('../../src/foam/parse/parse.js');
