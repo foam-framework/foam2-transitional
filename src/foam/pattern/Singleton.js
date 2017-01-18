@@ -35,8 +35,12 @@ foam.CLASS({
             (this.private_.instance_ = oldCreate.apply(this, arguments));
       };
     },
-    function clone() { return this; },
-    function equals(other) { /** @param {any=} other */ return other === this; }
+
+    function installInProto(p) {
+      // Not needed, but improves performance.
+      p.clone  = function() { return this; };
+      p.equals = function(o) { /** @param {any=} o */ return this === o; };
+    }
   ]
 });
 
