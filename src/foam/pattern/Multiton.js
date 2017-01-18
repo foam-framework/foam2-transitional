@@ -61,10 +61,12 @@ foam.CLASS({
         return instances[key] ||
             ( instances[key] = oldCreate.apply(this, arguments) );
       };
+    },
 
+    function installInProto(p) {
       // Not needed, but improves performance.
-      cls.clone = function() { return this; };
-      cls.equals = function(o) { return this === o; };
+      p.clone  = function() { return this; };
+      p.equals = function(o) { return this === o; };
     }
   ]
 });
