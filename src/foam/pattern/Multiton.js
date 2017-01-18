@@ -57,8 +57,10 @@ foam.CLASS({
         var instances = this.private_.instances ||
             ( this.private_.instances = {} );
         var key = args[property];
-        return instances[key] || ( instances[key] = oldCreate.apply(this, arguments) );
-      }
+
+        return instances[key] ||
+            ( instances[key] = oldCreate.apply(this, arguments) );
+      };
     },
     function clone() { return this; },
     function equals(other) { return other === this; }
