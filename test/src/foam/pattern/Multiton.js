@@ -16,25 +16,36 @@
  */
 
 describe('Multiton axiom', function() {
-  it('has multiple instances', function() {
-    var a = foam.pattern.Multiton.create();
-    var b = foam.pattern.Multiton.create();
-    expect(a).not.toBe(b);
+  it('object sharing works', function() {
+    foam.CLASS({
+      name: 'Test',
+      axioms: [
+        foam.pattern.Multiton.create({property: 'id'})
+      ],
+      properties: [ 'id' ]
+    });
+    var a1 = Test.create({id: 'a'});
+    var a2 = Test.create({id: 'a'});
+    var b  = Test.create({id: 'b'});
+    expect(a1.id == 'a');
+    expect(a2.id == 'a');
+    expect(b.id == 'a');
+    expect(a1 === a2);
+    expect(a1 !== b);
   });
 
-  it('that cannot be cloned', function() {
-    var a = foam.pattern.Multiton.create();
-    var b = a.clone();
-    expect(a).toBe(b);
+  it('cloneing is disabled', function() {
+    var a1 = Test.create({id: 'a'});
+    expect(a1 === a1.clone());
   });
 
-  it('should answer equals() with ===', function() {
-    var a = foam.pattern.Multiton.create();
-    var b = a.clone();
-    var c = foam.pattern.Multiton.create();
-    expect(a.equals(b)).toBe(true);
-    expect(b.equals(a)).toBe(true);
-    expect(a.equals(c)).toBe(false);
-    expect(a.equals(Math)).toBe(false);
+  it('equals works', function() {
+    var a1 = Test.create({id: 'a'});
+    var a2 = Test.create({id: 'a'});
+    var b  = Test.create({id: 'b'});
+    expect(a1.equals(a2));
+    expect(a2.equals(a1));
+    expect(! a1.equals(b));
+    expect(! b.equals(a1));
   });
 });

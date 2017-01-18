@@ -61,8 +61,10 @@ foam.CLASS({
         return instances[key] ||
             ( instances[key] = oldCreate.apply(this, arguments) );
       };
-    },
-    function clone() { return this; },
-    function equals(other) { return other === this; }
+
+      // Not needed, but improves performance.
+      cls.clone = function() { return this; };
+      cls.equals = function(o) { return this === o; };
+    }
   ]
 });
