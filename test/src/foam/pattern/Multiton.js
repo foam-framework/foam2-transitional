@@ -20,29 +20,29 @@ describe('Multiton axiom', function() {
     foam.CLASS({
       name: 'Test',
       axioms: [
-        foam.pattern.Multiton.create({property: 'id'})
+        foam.pattern.Multiton.create({property: 'id' })
       ],
       properties: [ 'id' ]
     });
-    var a1 = Test.create({id: 'a'});
-    var a2 = Test.create({id: 'a'});
-    var b  = Test.create({id: 'b'});
-    expect(a1.id == 'a');
-    expect(a2.id == 'a');
-    expect(b.id == 'a');
+    var a1 = Test.create({id: 'a' });
+    var a2 = Test.create({id: 'a' });
+    var b  = Test.create({id: 'b' });
+    expect(a1.id === 'a');
+    expect(a2.id === 'a');
+    expect(b.id === 'a');
     expect(a1 === a2);
     expect(a1 !== b);
   });
 
   it('cloneing is disabled', function() {
-    var a1 = Test.create({id: 'a'});
+    var a1 = Test.create({id: 'a' });
     expect(a1 === a1.clone());
   });
 
   it('equals works', function() {
-    var a1 = Test.create({id: 'a'});
-    var a2 = Test.create({id: 'a'});
-    var b  = Test.create({id: 'b'});
+    var a1 = Test.create({id: 'a' });
+    var a2 = Test.create({id: 'a' });
+    var b  = Test.create({id: 'b' });
     expect(a1.equals(a2));
     expect(a2.equals(a1));
     expect(! a1.equals(b));
