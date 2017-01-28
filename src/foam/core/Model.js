@@ -115,7 +115,7 @@ foam.CLASS({
       name: 'flags',
       factory: function() { return {}; }
     },
-    [ 'extends', 'FObject' ],
+    ['extends', 'FObject'],
     'refines',
     {
       // List of all axioms, including methods, properties, listeners,
@@ -141,5 +141,5 @@ foam.CLASS({
     }
   ],
 
-  methods: [ foam.boot.buildClass ]
+  methods: [foam.boot.buildClass]
 });

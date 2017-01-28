@@ -32,7 +32,7 @@
 foam.CLASS({
   name: 'ImportsTest',
 
-  imports: [ 'log', 'warn' ],
+  imports: ['log', 'warn'],
 
   methods: [
     function foo() {
@@ -44,9 +44,9 @@ foam.CLASS({
 
 foam.CLASS({
   name: 'ExportsTest',
-  requires: [ 'ImportsTest' ],
+  requires: ['ImportsTest'],
 
-  exports: [ 'log', 'log as warn' ],
+  exports: ['log', 'log as warn'],
 
   methods: [
     function init() {
@@ -69,14 +69,14 @@ foam.CLASS({
   Examples:
 <pre>
     // import 'userDAO' from the Context and make available as this.dao
-    imports: [ 'userDAO as dao' ]
+    imports: ['userDAO as dao']
 
     // export my log method as 'warn'
-    exports: [ 'log as warn' ]
+    exports: ['log as warn']
 
     // If the axiom to be exported isn't named, but just aliased, then 'this'
     // is exported as the named alias.  This is how objects export themselves.
-    exports: [ 'as Controller' ]
+    exports: ['as Controller']
 </pre>
   See Context.js.
  */
@@ -203,7 +203,7 @@ foam.CLASS({
                 m[b.exportName] = a.exportAs ? a.exportAs(this) : this[b.key];
               } else {
                 // Exports that don't have a key mean that we are exporting
-                // 'this'.  So if you did exports: [ 'as Bank' ], that would
+                // 'this'.  So if you did exports: ['as Bank'], that would
                 // mean that we are exporting 'this' as Bank.
                 //
                 // Anyone who imported 'Bank' would get a reference to the
@@ -263,20 +263,20 @@ foam.CLASS({
 
           switch ( a.length ) {
             case 1:
-              return foam.core.Export.create({ exportName: a[0], key: a[0] });
+              return foam.core.Export.create({exportName: a[0], key: a[0]});
 
             case 2:
               // Export 'this'
               foam.assert(
                   a[0] === 'as',
                   'Invalid export syntax: key [as value] | as value');
-              return foam.core.Export.create({ exportName: a[1], key: null });
+              return foam.core.Export.create({exportName: a[1], key: null});
 
             case 3:
               foam.assert(
                   a[1] === 'as',
                   'Invalid export syntax: key [as value] | as value');
-              return foam.core.Export.create({ exportName: a[2], key: a[0] });
+              return foam.core.Export.create({exportName: a[2], key: a[0]});
 
             default:
               foam.assert(false,

@@ -46,7 +46,7 @@ foam.CLASS({
   package: 'foam.core',
   name: 'Requires',
 
-  properties: [ 'name', 'path' ],
+  properties: ['name', 'path'],
 
   methods: [
     function installInProto(proto) {
@@ -95,7 +95,7 @@ foam.CLASS({
           var path = a[0];
           var parts = path.split('.');
           var name = a[1] || parts[parts.length - 1];
-          return foam.core.Requires.create({ name: name, path: path });
+          return foam.core.Requires.create({name: name, path: path});
         }
         return foam.core.Requires.create(o);
       }

@@ -26,7 +26,7 @@ describe('interfaces', function() {
           name: 'foo',
           returns: 'Number',
           args: [
-            { name: 'bar' }
+            {name: 'bar'}
           ]
         }
       ]
@@ -39,14 +39,14 @@ describe('interfaces', function() {
     foam.INTERFACE({
       name: 'IThing',
       methods: [
-        { name: 'foo' }
+        {name: 'foo'}
       ]
     });
 
     foam.CLASS({
       package: 'test',
       name: 'Thing',
-      implements: [ 'IThing' ],
+      implements: ['IThing'],
     });
 
     var t = test.Thing.create();
@@ -56,14 +56,14 @@ describe('interfaces', function() {
   });
 
   it('correctly answer isInstance on classes', function() {
-    foam.INTERFACE({ package: 'test', name: 'Int1' });
-    foam.INTERFACE({ package: 'test', name: 'Int2' });
-    foam.INTERFACE({ package: 'test', name: 'Int3' });
+    foam.INTERFACE({package: 'test', name: 'Int1'});
+    foam.INTERFACE({package: 'test', name: 'Int2'});
+    foam.INTERFACE({package: 'test', name: 'Int3'});
 
     foam.CLASS({
       package: 'test',
       name: 'Thing',
-      implements: [ 'test.Int1', 'test.Int2' ]
+      implements: ['test.Int1', 'test.Int2']
     });
 
     var t = test.Thing.create();
@@ -78,14 +78,14 @@ describe('interfaces', function() {
       code: function() { return 7; }
     });
 
-    var prop = foam.core.Property.create({ name: 'abc' });
+    var prop = foam.core.Property.create({name: 'abc'});
 
     foam.INTERFACE({
       package: 'test',
       name: 'Int1',
       properties: [
-        { name: 'foo', value: 7 },
-        [ 'defaulting', 4 ],
+        {name: 'foo', value: 7},
+        ['defaulting', 4],
         'bare',
         prop
       ],
@@ -99,7 +99,7 @@ describe('interfaces', function() {
 
       topics: [
         'event',
-        { name: 'otherThing' }
+        {name: 'otherThing'}
       ],
 
       methods: [
@@ -113,7 +113,7 @@ describe('interfaces', function() {
     foam.CLASS({
       package: 'test',
       name: 'Thing',
-      implements: [ 'test.Int1' ],
+      implements: ['test.Int1'],
       properties: [
         'asdf'
       ]
@@ -155,12 +155,12 @@ describe('interfaces', function() {
   });
 
   it('support extending, and the getAxiom* methods like classes', function() {
-    var m = foam.core.Method.create({ name: 'mmm' });
+    var m = foam.core.Method.create({name: 'mmm'});
     foam.INTERFACE({
       package: 'test',
       name: 'Int1',
-      properties: [ 'foo', 'bar' ],
-      methods: [ m ]
+      properties: ['foo', 'bar'],
+      methods: [m]
     });
 
     expect(test.Int1.getAxiomByName('mmm')).toBe(m);
@@ -186,7 +186,7 @@ describe('interfaces', function() {
       foam.CLASS({
         package: 'test',
         name: 'Thing',
-        implements: [ 'test.DoesNotExist' ]
+        implements: ['test.DoesNotExist']
       });
       test.Thing.create();
     }).toThrow();
@@ -198,15 +198,15 @@ describe('interfaces', function() {
     foam.CLASS({
       package: 'test',
       name: 'Mixin',
-      properties: [ 'foo' ]
+      properties: ['foo']
     });
 
     expect(function() {
       foam.CLASS({
         package: 'test',
         name: 'User',
-        implements: [ { path: 'test.Mixin' } ],
-        properties: [ 'bar' ]
+        implements: [{path: 'test.Mixin'}],
+        properties: ['bar']
       });
     }).toThrow();
   });
@@ -216,14 +216,14 @@ describe('interfaces', function() {
       package: 'test',
       name: 'Int1',
       properties: [
-        { class: 'String', name: 'baz' }
+        {class: 'String', name: 'baz'}
       ]
     });
     foam.INTERFACE({
       package: 'test',
       name: 'Int2',
       properties: [
-        { class: 'Int', name: 'baz' }
+        {class: 'Int', name: 'baz'}
       ]
     });
 
@@ -231,7 +231,7 @@ describe('interfaces', function() {
     foam.CLASS({
       package: 'test',
       name: 'MultiImplement',
-      implements: [ 'test.Int1', 'test.Int2' ]
+      implements: ['test.Int1', 'test.Int2']
     });
 
     expect(global.matchingLine(log(), 'Change of Axiom')).toBe(
@@ -246,7 +246,7 @@ describe('interfaces', function() {
     foam.INTERFACE({
       package: 'test',
       name: 'Int1',
-      properties: [ 'bar' ]
+      properties: ['bar']
     });
 
     foam.INTERFACE({
@@ -261,7 +261,7 @@ describe('interfaces', function() {
       foam.CLASS({
         package: 'test',
         name: 'MultiImplement2',
-        implements: [ 'test.Int1', 'test.Int2' ]
+        implements: ['test.Int1', 'test.Int2']
       });
     }).toThrow();
 
@@ -269,7 +269,7 @@ describe('interfaces', function() {
     foam.CLASS({
       package: 'test',
       name: 'MultiImplement2',
-      implements: [ 'test.Int2', 'test.Int1' ]
+      implements: ['test.Int2', 'test.Int1']
     });
     expect(global.matchingLine(log(), 'Change of Axiom')).toBe(
         'Change of Axiom test.MultiImplement2.bar type from foam.core.Method ' +
@@ -288,7 +288,7 @@ describe('interfaces', function() {
     foam.CLASS({
       package: 'test',
       name: 'Obj',
-      implements: [ 'test.Int' ]
+      implements: ['test.Int']
     });
 
     foam.CLASS({

@@ -32,7 +32,7 @@
 foam.CLASS({
   package: 'foam.dao',
   name: 'ArraySink',
-  implements: [ 'foam.dao.Sink' ],
+  implements: ['foam.dao.Sink'],
 
   properties: [
     {

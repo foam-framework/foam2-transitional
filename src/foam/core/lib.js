@@ -41,7 +41,7 @@ Object.defineProperty(
         Object.defineProperty(
             this,
             '$UID__',
-            { value: foam.next$UID(), enumerable: false });
+            {value: foam.next$UID(), enumerable: false});
       }
       return this.$UID__;
     },
@@ -77,7 +77,7 @@ foam.LIB({
   constants: {
     PORT: 4000
   },
-  methods: [ function sendPacket() { ... }  ]
+  methods: [function sendPacket() { ... }]
 });
 </pre>
 Produces <code>foam.network</code>:

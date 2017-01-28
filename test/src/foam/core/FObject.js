@@ -54,11 +54,11 @@ describe('FObject features', function() {
     });
 
 
-    var objSource = ClassA.create({ a: 3, b: 4 });
-    var obj2Source = ClassB.create({ a: 5, c: 6 });
+    var objSource = ClassA.create({a: 3, b: 4});
+    var obj2Source = ClassB.create({a: 5, c: 6});
 
     // init from plain JS object.
-    var obj = ClassA.create({ a: 1, b: 2 });
+    var obj = ClassA.create({a: 1, b: 2});
     expect(obj.a).toBe(1);
     expect(obj.b).toBe(2);
   });
@@ -566,7 +566,7 @@ describe('FObject features', function() {
       ]
     });
 
-    var obj = SomeClass.create({ abc: 12 });
+    var obj = SomeClass.create({abc: 12});
 
     var wasCalled = false;
     obj.sub('propertyChange', 'abc', function(s, pc, abc, slot, oldValue) {
@@ -688,7 +688,7 @@ describe('FObject features', function() {
 
     // onDetach should throw if the input is not a detachable.
     expect(function() {
-      obj2.onDetach({ detach: 7 });
+      obj2.onDetach({detach: 7});
     }).toThrow();
     expect(function() {
       obj2.onDetach(7);
@@ -846,7 +846,7 @@ describe('Library level FObject methods', function() {
 
     foam.CLASS({
       refines: 'SomeClass',
-      exports: [ 'foo' ]
+      exports: ['foo']
     });
 
     expect(global.matchingLine(capture(), 'Refining class')).toBe(undefined);
@@ -857,7 +857,7 @@ describe('Library level FObject methods', function() {
 
     foam.CLASS({
       refines: 'SomeClass',
-      exports: [ 'bar' ]
+      exports: ['bar']
     });
 
     expect(global.matchingLine(capture(), 'Refining class')).toBe(
@@ -867,22 +867,22 @@ describe('Library level FObject methods', function() {
 
     foam.CLASS({
       refines: 'SomeClass',
-      flags: { noWarnOnRefinesAfterCreate: true },
-      exports: [ 'baz' ]
+      flags: {noWarnOnRefinesAfterCreate: true},
+      exports: ['baz']
     });
 
     expect(global.matchingLine(capture(), 'Refining class')).toBe(undefined);
 
     foam.CLASS({
       refines: 'SomeClass',
-      properties: [ 'p1' ]
+      properties: ['p1']
     });
 
     expect(global.matchingLine(capture(), 'Refining class')).toBe(undefined);
 
     foam.CLASS({
       refines: 'SomeClass',
-      methods: [ function m1() {} ]
+      methods: [function m1() {}]
     });
 
     expect(global.matchingLine(capture(), 'Refining class')).toBe(undefined);

@@ -68,6 +68,6 @@ foam.CLASS({
         return of.isInstance(a) ? a : of.create(a, this);
       }
     },
-    [ 'postSet', function(_, a) { this.axioms_.push.apply(this.axioms_, a); } ]
+    ['postSet', function(_, a) { this.axioms_.push.apply(this.axioms_, a); }]
   ]
 });

@@ -484,11 +484,11 @@ exports.astNodeVisitor = {
         node: node
       };
       e.event = 'symbolFound';
-      e.finishers = [ parser.addDocletRef ];
+      e.finishers = [parser.addDocletRef];
 
       // store for possible future refinements, incorporate existing refinement comments
       if ( ! modelComments[classPackage + '.' + className] ) {
-        modelComments[classPackage + '.' + className] = { _queue: [] };
+        modelComments[classPackage + '.' + className] = {_queue: []};
       }
       var mc = modelComments[classPackage + '.' + className];
       mc.e = e;
@@ -544,7 +544,7 @@ exports.astNodeVisitor = {
         node: node
       };
       e.event = 'symbolFound';
-      e.finishers = [ parser.addDocletRef ];
+      e.finishers = [parser.addDocletRef];
 
       processArgs(e, node);
 
@@ -572,7 +572,7 @@ exports.astNodeVisitor = {
         node: node
       };
       e.event = 'symbolFound';
-      e.finishers = [ parser.addDocletRef ];
+      e.finishers = [parser.addDocletRef];
 
       if ( node.parent.parent.key.name === 'methods' ) {
         processArgs(e, getNodeNamed(node, 'code'));

@@ -20,16 +20,16 @@ describe('Sink interface', function() {
     foam.CLASS({
       package: 'test',
       name: 'Sink',
-      implements: [ 'foam.dao.Sink' ]
+      implements: ['foam.dao.Sink']
     });
 
     foam.CLASS({
       package: 'test',
       name: 'Person',
-      properties: [ 'id', 'name' ]
+      properties: ['id', 'name']
     });
 
-    var p = test.Person.create({ id: 1, name: 'Jeff' });
+    var p = test.Person.create({id: 1, name: 'Jeff'});
     var sink = test.Sink.create();
     expect(function() { sink.put(p); }).not.toThrow();
     expect(function() { sink.remove(p); }).not.toThrow();

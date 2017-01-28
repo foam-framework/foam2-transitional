@@ -122,7 +122,7 @@ foam.CLASS({
       adaptArrayElement: function(o) {
         if ( typeof o === 'function' ) {
           foam.assert(o.name, 'Listener must be named');
-          return foam.core.Listener.create({ name: o.name, code: o });
+          return foam.core.Listener.create({name: o.name, code: o});
         }
 
         return foam.core.Listener.create(o);

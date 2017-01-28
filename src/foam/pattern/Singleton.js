@@ -24,7 +24,7 @@ foam.CLASS({
   package: 'foam.pattern',
   name: 'Singleton',
 
-  properties: [ [ 'name', 'create' ] ],
+  properties: [['name', 'create']],
 
   methods: [
     function installInClass(cls) {
@@ -47,6 +47,6 @@ foam.CLASS({
 // We only need one Singleton, so make it a Singleton.
 foam.CLASS({
   refines: 'foam.pattern.Singleton',
-  flags: { noWarnOnRefinesAfterCreate: true },
-  axioms: [ foam.pattern.Singleton.create() ]
+  flags: {noWarnOnRefinesAfterCreate: true},
+  axioms: [foam.pattern.Singleton.create()]
 });

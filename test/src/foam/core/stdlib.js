@@ -223,8 +223,8 @@ describe('foam.Function', function() {
   });
 
   it('appendArguments', function() {
-    var array1 = [ 'a' ];
-    var array2 = [ 'b' ];
+    var array1 = ['a'];
+    var array2 = ['b'];
     (function(a, b, c, d) {
       foam.Function.appendArguments(array1, arguments);
       foam.Function.appendArguments(array2, arguments, 2);
@@ -249,7 +249,7 @@ describe('foam.Function', function() {
     var str = foam.Function.argsStr(
       // jscs:disable
       function(a, /*string?*/b, c /*array*/) {
-        return [ a, b, c ];
+        return [a, b, c];
       }
       // jscs:enable
     );
@@ -260,7 +260,7 @@ describe('foam.Function', function() {
     var str2 = foam.Function.argsStr(
 function tricky(a, c
  /*array*/) {
-return [ a, c ];
+return [a, c];
        }
     );
     // jscs:enable
@@ -279,7 +279,7 @@ return [ a, c ];
       var fn = function() {};
       fn.toString = function() {
         return '  fun ction invalid(a, c\r \p\n  { ' +
-        '         return [ a, b, c ]; ' +
+        '         return [a, b, c]; ' +
         '      } ';
       };
       foam.Function.argsStr(fn);
@@ -344,7 +344,7 @@ return [ a, c ];
         return (true);
       };
       var args = foam.Function.formalArgs(fn);
-      expect(args).toEqual([ 'str', 'bool', 'func', 'obj', 'num', 'arr' ]);
+      expect(args).toEqual(['str', 'bool', 'func', 'obj', 'num', 'arr']);
     });
 
     it('grabs typed argument names', function() {
@@ -354,7 +354,7 @@ return [ a, c ];
         return (true);
       };
       var args = foam.Function.formalArgs(fn);
-      expect(args).toEqual([ 'str', 'bool', 'func', 'obj', 'num', 'arr' ]);
+      expect(args).toEqual(['str', 'bool', 'func', 'obj', 'num', 'arr']);
       // jscs:enable
     });
 
@@ -365,7 +365,7 @@ return [ a, c ];
         return (true);
       };
       var args = foam.Function.formalArgs(fn);
-      expect(args).toEqual([ 'arg', 'more', 'name', 'another' ]);
+      expect(args).toEqual(['arg', 'more', 'name', 'another']);
       // jscs:enable
     });
 
@@ -379,7 +379,7 @@ return [ a, c ];
           '};';
       };
       var args = foam.Function.formalArgs(fn);
-      expect(args).toEqual([ 'arg1', '...restArgs' ]);
+      expect(args).toEqual(['arg1', '...restArgs']);
     });
 
   });
@@ -388,23 +388,23 @@ return [ a, c ];
     // normal case
     // jscs:disable
     var fn = function(a, /*string?*/b, c /*array*/) {
-      return [ a + b + c ];
+      return [a + b + c];
     };
     // jscs:enable
-    var src = { a: 'A', b: 'B', c: 'C' };
+    var src = {a: 'A', b: 'B', c: 'C'};
 
-    expect(foam.Function.withArgs(fn, src)).toEqual([ 'ABC' ]);
+    expect(foam.Function.withArgs(fn, src)).toEqual(['ABC']);
 
     // missing args
-    var src2 = { a: 'A', c: 'C' };
+    var src2 = {a: 'A', c: 'C'};
 
-    expect(foam.Function.withArgs(fn, src2)).toEqual([ 'AundefinedC' ]);
+    expect(foam.Function.withArgs(fn, src2)).toEqual(['AundefinedC']);
 
     // opt_self
     var fn2 = function(a) {
       return this.value + a;
     };
-    var self = { value: 77 };
+    var self = {value: 77};
     expect(foam.Function.withArgs(fn2, src2, self)).toEqual('77A');
 
     // function args are bound
@@ -518,9 +518,9 @@ describe('foam.String', function() {
       expect(pstr).toBe('42');
     });
     it('toString()s objects', function() {
-      pstr = foam.String.coerce({ toString: function() {
+      pstr = foam.String.coerce({toString: function() {
         return 'You called toString!';
-      } });
+      }});
       expect(pstr).toBe('You called toString!');
     });
     // jscs:disable
@@ -533,7 +533,7 @@ string
     });
     // jscs:enable
     it('defaults to empty string for unsupported values', function() {
-      pstr = foam.String.coerce({ toString: null });
+      pstr = foam.String.coerce({toString: null});
       expect(pstr).toBe('');
     });
   });
@@ -658,12 +658,12 @@ describe('foam.Array', function() {
       foam.CLASS({
         package: 'test',
         name: 'CompA',
-        properties: [ 'a', 'b' ]
+        properties: ['a', 'b']
       });
       foam.CLASS({
         package: 'test',
         name: 'CompB',
-        properties: [ 'b', 'c' ]
+        properties: ['b', 'c']
       });
       x = global.test.CompA.create();
       y = global.test.CompB.create();
@@ -673,7 +673,7 @@ describe('foam.Array', function() {
     });
 
     it('reports no change correctly', function() {
-      var a = [ 'a', 't', x ];
+      var a = ['a', 't', x];
       expect(foam.Array.diff(a, a).added).toEqual([]);
       expect(foam.Array.diff(a, a).removed).toEqual([]);
 
@@ -682,60 +682,60 @@ describe('foam.Array', function() {
       expect(foam.Array.diff(b, b).removed).toEqual([]);
     });
     it('finds added primitive elements', function() {
-      var a = [ 'a', 't' ];
-      var b = [ 'a', 'r', 't' ];
-      expect(foam.Array.diff(a, b).added).toEqual([ 'r' ]);
+      var a = ['a', 't'];
+      var b = ['a', 'r', 't'];
+      expect(foam.Array.diff(a, b).added).toEqual(['r']);
     });
     it('finds removed primitive elements', function() {
-      var a = [ 'a', 't' ];
-      var b = [ 'a', 'r', 't' ];
-      expect(foam.Array.diff(b, a).removed).toEqual([ 'r' ]);
+      var a = ['a', 't'];
+      var b = ['a', 'r', 't'];
+      expect(foam.Array.diff(b, a).removed).toEqual(['r']);
     });
     it('finds added object elements', function() {
-      var a = [ x, 4 ];
-      var b = [ y, x, 4 ];
-      expect(foam.Array.diff(a, b).added).toEqual([ y ]);
+      var a = [x, 4];
+      var b = [y, x, 4];
+      expect(foam.Array.diff(a, b).added).toEqual([y]);
     });
     it('finds removed object elements', function() {
-      var a = [ y, 4 ];
-      var b = [ y, x, 4 ];
-      expect(foam.Array.diff(b, a).removed).toEqual([ x ]);
+      var a = [y, 4];
+      var b = [y, x, 4];
+      expect(foam.Array.diff(b, a).removed).toEqual([x]);
     });
     it('finds swapped elements', function() {
-      var a = [ y, 4, 8 ];
-      var b = [ 4, x, 'hello' ];
-      expect(foam.Array.diff(a, b).added).toEqual([ x, 'hello' ]);
-      expect(foam.Array.diff(a, b).removed).toEqual([ y, 8 ]);
+      var a = [y, 4, 8];
+      var b = [4, x, 'hello'];
+      expect(foam.Array.diff(a, b).added).toEqual([x, 'hello']);
+      expect(foam.Array.diff(a, b).removed).toEqual([y, 8]);
     });
     it('treats multiple copies of an element as separate items', function() {
-      var a = [ 4, 5, 6, 7, 8, 8 ];
-      var b = [ 4, 4, 4, 4, 8, 8 ];
-      expect(foam.Array.diff(a, b).added).toEqual([ 4, 4, 4 ]);
-      expect(foam.Array.diff(a, b).removed).toEqual([ 5, 6, 7 ]);
+      var a = [4, 5, 6, 7, 8, 8];
+      var b = [4, 4, 4, 4, 8, 8];
+      expect(foam.Array.diff(a, b).added).toEqual([4, 4, 4]);
+      expect(foam.Array.diff(a, b).removed).toEqual([5, 6, 7]);
     });
   });
 
   describe('clone (deep copy)', function() {
     it('creates a new array', function() {
-      var a = [ 2, 4, 6, 8 ];
+      var a = [2, 4, 6, 8];
       var b = foam.util.clone(a);
       expect(a).not.toBe(b);
       expect(a).toEqual(b);
     });
     // FUTURE: When typeOf(o) supports FObject, enable this test
     // it('clones instances', function() {
-    //   var a = [ 2, foam.core.Property.create({ name: 'hello' }), 4 ];
+    //   var a = [2, foam.core.Property.create({name: 'hello'}), 4];
     //   var b = foam.util.clone(a);
     //   expect(a).not.toBe(b);
-    //   expect(foam.util.compare(a[ 1 ], b[ 1 ])).toEqual(0);
-    //   expect(a[ 1 ]).not.toBe(b[ 1 ]);
+    //   expect(foam.util.compare(a[1], b[1])).toEqual(0);
+    //   expect(a[1]).not.toBe(b[1]);
     // });
   });
 
   it('isInstance', function() {
     expect(foam.Array.isInstance([])).toBe(true);
     expect(foam.Array.isInstance(88)).toBe(false);
-    expect(foam.Array.isInstance({ 0: 'a', 1: 'b' })).toBe(false);
+    expect(foam.Array.isInstance({0: 'a', 1: 'b'})).toBe(false);
     (function(a, b, c) {
       expect(foam.Array.isInstance(arguments)).toBe(false);
     })(1, 2, 3);
@@ -743,44 +743,44 @@ describe('foam.Array', function() {
 
   it('equals', function() {
     expect(foam.Array.equals([], [])).toBe(true);
-    expect(foam.Array.equals([ 1, 2, 3 ], [ 1, 2, 3 ])).toBe(true);
-    expect(foam.Array.equals([ 44, 33 ], [ '44', 33 ])).toBe(false);
+    expect(foam.Array.equals([1, 2, 3], [1, 2, 3])).toBe(true);
+    expect(foam.Array.equals([44, 33], ['44', 33])).toBe(false);
     expect(foam.Array.equals(
-      [ [ 1, 2 ], [ 3, 4 ] ], [ [ 1, 2 ], [ 3, 4 ] ]
+      [[1, 2], [3, 4]], [[1, 2], [3, 4]]
     )).toBe(true);
-    expect(foam.Array.equals([ 33 ], [ '44', 33 ])).toBe(false);
-    expect(foam.Array.equals([ 33 ], null)).toBe(false);
-    expect(foam.Array.equals([ 33 ], 33)).toBe(false);
+    expect(foam.Array.equals([33], ['44', 33])).toBe(false);
+    expect(foam.Array.equals([33], null)).toBe(false);
+    expect(foam.Array.equals([33], 33)).toBe(false);
   });
 
   it('compare', function() {
-    expect(foam.Array.compare([ 1, 2, 3 ], [ 1, 2, 3 ])).toBe(0);
-    expect(foam.Array.compare([ 1, 2, 4 ], [ 1, 2, 3 ])).toBe(1);
-    expect(foam.Array.compare([ 1, 1, 3 ], [ 1, 2, 3 ])).toBe(-1);
+    expect(foam.Array.compare([1, 2, 3], [1, 2, 3])).toBe(0);
+    expect(foam.Array.compare([1, 2, 4], [1, 2, 3])).toBe(1);
+    expect(foam.Array.compare([1, 1, 3], [1, 2, 3])).toBe(-1);
 
-    expect(foam.Array.compare([ 1, 2, 3 ], [ 1, 2 ])).toBe(1);
-    expect(foam.Array.compare([ 1, 2 ], [ 1, 2, 3 ])).toBe(-1);
+    expect(foam.Array.compare([1, 2, 3], [1, 2])).toBe(1);
+    expect(foam.Array.compare([1, 2], [1, 2, 3])).toBe(-1);
 
-    expect(foam.Array.compare([ 1, 2 ], null)).toBe(1);
+    expect(foam.Array.compare([1, 2], null)).toBe(1);
   });
 
   it('hashCode', function() {
     // uses hash of each element
-    expect(foam.Array.hashCode([ 'a string' ]))
+    expect(foam.Array.hashCode(['a string']))
       .toBe(foam.String.hashCode('a string'));
 
     // ordering matters
-    expect(foam.Array.hashCode([ 'a string', 'b string' ]))
-      .not.toBe(foam.Array.hashCode([ 'b string', 'a string' ]));
+    expect(foam.Array.hashCode(['a string', 'b string']))
+      .not.toBe(foam.Array.hashCode(['b string', 'a string']));
 
     // slight change results in different hash
-    expect(foam.Array.hashCode([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]))
-      .not.toBe(foam.Array.hashCode([ 1, 2, 3, 3, 5, 6, 7, 8, 9 ]));
+    expect(foam.Array.hashCode([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+      .not.toBe(foam.Array.hashCode([1, 2, 3, 3, 5, 6, 7, 8, 9]));
   });
   it('remove', function() {
-    var arr = [ 1, 2, 3, 4, 5 ];
+    var arr = [1, 2, 3, 4, 5];
     foam.Array.remove(arr, 3);
-    expect(arr[ 3 ]).toEqual(5);
+    expect(arr[3]).toEqual(5);
   });
 
 });
@@ -913,7 +913,7 @@ describe('foam.Context', function() {
 describe('foam.Object', function() {
 
   it('forEach', function() {
-    var aProto = { f: 'hello' };
+    var aProto = {f: 'hello'};
     var a = {
       __proto__: aProto,
       c: 2,
@@ -939,19 +939,19 @@ describe('foam.Object', function() {
     expect(foam.Object.isInstance(null)).toBe(false);
   });
   it('clone', function() {
-    var a = { d: 'hello' };
+    var a = {d: 'hello'};
     expect(foam.Object.clone(a)).toBe(a);
   });
   it('equals', function() {
-    var a = { d: 'hello' };
-    var b = { d: 'hello' };
+    var a = {d: 'hello'};
+    var b = {d: 'hello'};
     expect(foam.Object.equals(a, b)).toBe(false);
     expect(foam.Object.equals(a, a)).toBe(true);
     expect(foam.Object.equals(a, null)).toBe(false);
   });
   it('compare', function() {
-    var a = { d: 'hello' };
-    var b = { d: 'hello' };
+    var a = {d: 'hello'};
+    var b = {d: 'hello'};
     a.$UID; // UID ordering matters
     b.$UID;
     expect(foam.Object.compare(a, b)).toBe(-1);
@@ -959,11 +959,11 @@ describe('foam.Object', function() {
     expect(foam.Object.compare(a, undefined)).toBe(1);
   });
   it('hashCode', function() {
-    expect(foam.Object.hashCode({ key: 'anything' })).toBe(0);
+    expect(foam.Object.hashCode({key: 'anything'})).toBe(0);
     expect(foam.Object.hashCode()).toBe(0);
   });
   it('freeze', function() {
-    var a = { d: 'hello' };
+    var a = {d: 'hello'};
     foam.Object.freeze(a);
     expect(a.$UID).toBeGreaterThan(0);
     a.d = 'fail';
@@ -979,9 +979,9 @@ describe('foam.util', function() {
       'hello',
       function() {},
       new Date(4843090),
-      foam.core.Property.create({ name: 'prop' }),
-      { a: 'A' },
-      [ 2, 4 ],
+      foam.core.Property.create({name: 'prop'}),
+      {a: 'A'},
+      [2, 4],
       true,
       undefined,
       null
@@ -1009,9 +1009,9 @@ describe('foam.util', function() {
 describe('foam.package', function() {
   it('ensurePackage', function() {
     var root = {
-      package1: { subPack1: { a: 1 },
-      subPack2: { a: 2 } },
-      package2: { a: 3 }
+      package1: {subPack1: {a: 1},
+      subPack2: {a: 2}},
+      package2: {a: 3}
     };
 
     expect(foam.package.ensurePackage(root, '')).toBe(root);
@@ -1019,7 +1019,7 @@ describe('foam.package', function() {
     expect(foam.package.ensurePackage(root, null)).toBe(root);
 
     expect(function() {
-      foam.package.ensurePackage(root, { bad: 'path' });
+      foam.package.ensurePackage(root, {bad: 'path'});
     }).toThrow();
 
     expect(foam.package.ensurePackage(root, 'package2').a).toBe(3);
@@ -1033,10 +1033,10 @@ describe('foam.package', function() {
       foam.package.registerClass('Not an object');
     }).toThrow();
     expect(function() {
-      foam.package.registerClass({ name: 88 });
+      foam.package.registerClass({name: 88});
     }).toThrow();
     expect(function() {
-      foam.package.registerClass({ name: { not: 'a string' } });
+      foam.package.registerClass({name: {not: 'a string'}});
     }).toThrow();
 
     foam.package.registerClass({

@@ -30,7 +30,7 @@
 foam.CLASS({
   package: 'foam.core',
   name: 'Constant',
-  properties: [ 'name', 'value' ],
+  properties: ['name', 'value'],
 
   methods: [
     function installInClass(cls) {
@@ -61,7 +61,7 @@ foam.CLASS({
         if ( ! Array.isArray(a) ) {
           var cs = [];
           for ( var key in a ) {
-            cs.push(foam.core.Constant.create({ name: key, value: a[key] }));
+            cs.push(foam.core.Constant.create({name: key, value: a[key]}));
           }
           return cs;
         }

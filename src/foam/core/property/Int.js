@@ -22,14 +22,14 @@ foam.CLASS({
 
   properties: [
     'units',
-    [ 'value', 0 ],
-    [ 'adapt', function adaptInt(_, v) {
+    ['value', 0],
+    ['adapt', function adaptInt(_, v) {
       foam.assert(foam.Number.isInstance(v),
         'Cannot convert type', typeof v, 'to int');
       foam.assert(Math.trunc(v) === v,
         'Attempted to set int to float value');
 
       return v;
-    } ]
+    }]
   ]
 });

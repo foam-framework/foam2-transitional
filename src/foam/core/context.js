@@ -105,7 +105,7 @@
 
           if ( ! foam.core.Slot.isInstance(v) ) {
             Object.defineProperty(sub, foam.String.toSlotName(key), {
-              value: foam.core.ConstantSlot.create({ value: v })
+              value: foam.core.ConstantSlot.create({value: v})
             });
 
             Object.defineProperty(sub, key, {

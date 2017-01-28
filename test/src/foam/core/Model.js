@@ -60,7 +60,7 @@ describe('Model properties', function() {
         {
           name: 'longFormProp'
         },
-        [ 'mediumFormProp', '' ],
+        ['mediumFormProp', ''],
         'shortFormProp'
       ]
     });
@@ -192,7 +192,7 @@ describe('Model properties', function() {
       ]
     });
 
-    var obj = Abc.create({ a: 'world' });
+    var obj = Abc.create({a: 'world'});
 
     expect(obj.a).toBe('hello there world');
   });
@@ -276,7 +276,7 @@ describe('Model properties', function() {
         {
           name: 'withFactory',
           factory: function() {
-            return { a: 456 };
+            return {a: 456};
           }
         }
       ]
@@ -291,13 +291,13 @@ describe('Model properties', function() {
     expect(obj1.hasOwnProperty('withValue')).toBe(false);
 
     // factory specifies a factory to run that returns a value which is set to the property
-    expect(obj1.withFactory).toEqual({ a: 456 });
+    expect(obj1.withFactory).toEqual({a: 456});
 
     // properties initialized with a factory are considered to be "set"
     expect(obj1.hasOwnProperty('withFactory')).toBe(true);
 
     // obj2 will also have an equivalent value for 'withFactory'
-    expect(obj2.withFactory).toEqual({ a: 456 });
+    expect(obj2.withFactory).toEqual({a: 456});
 
     // However the factory is run for each instance of Abc, so
     // the two objects have different actual objects for their
@@ -330,7 +330,7 @@ describe('Model properties', function() {
     // First time through the preSet, oldValue should be undefined
     // as the factory shouldn't be run.
     expectedOldValue = undefined;
-    var obj = Abc.create({ prop: 1 });
+    var obj = Abc.create({prop: 1});
     expect(preSetCalled).toBe(true);
 
     // Second time through the preSet, oldValue should be the

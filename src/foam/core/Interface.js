@@ -58,16 +58,16 @@ foam.CLASS({
  * foam.INTERFACE({
  *   package: 'example',
  *   name: 'MyInterface',
- *   properties: [ 'foo' ],
+ *   properties: ['foo'],
  *   methods: [
- *     { name: 'bar' }
+ *     {name: 'bar'}
  *   ]
  * });
  *
  * foam.CLASS({
  *   package: 'example',
  *   name: 'SomeClass',
- *   implements: [ 'example.MyInterface' ],
+ *   implements: ['example.MyInterface'],
  *
  *   methods: [
  *     function bar() {
@@ -133,7 +133,7 @@ foam.CLASS({
       adaptArrayElement: function(o) {
         if ( typeof o === 'function' ) {
           foam.assert(o.name, 'Methods must be named');
-          return foam.core.Method.create({ name: o.name, code: o });
+          return foam.core.Method.create({name: o.name, code: o});
         }
 
         return foam.core.Method.isInstance(o) ?  o :
@@ -153,7 +153,7 @@ foam.CLASS({
       of: 'foam.core.Topic',
       adaptArrayElement: function(o) {
         return typeof o === 'string'        ?
-          foam.core.Topic.create({ name: o }) :
+          foam.core.Topic.create({name: o}) :
           foam.core.Topic.create(o)         ;
       }
     },

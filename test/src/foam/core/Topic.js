@@ -21,7 +21,7 @@ describe('topics', function() {
     foam.CLASS({
       package: 'test',
       name: 'TopicTest',
-      topics: [ 'testEvent' ],
+      topics: ['testEvent'],
     });
 
     var t = test.TopicTest.create();
@@ -37,7 +37,7 @@ describe('topics', function() {
     foam.CLASS({
       package: 'test',
       name: 'TopicTest',
-      topics: [ 'testEvent' ],
+      topics: ['testEvent'],
     });
 
     var called = false;
@@ -52,7 +52,7 @@ describe('topics', function() {
     foam.CLASS({
       package: 'test',
       name: 'TopicTest',
-      topics: [ 'testEvent' ],
+      topics: ['testEvent'],
     });
 
     var called = false;
@@ -67,7 +67,7 @@ describe('topics', function() {
     foam.CLASS({
       package: 'test',
       name: 'TopicTest',
-      topics: [ { name: 'testEvent' } ],
+      topics: [{name: 'testEvent'}],
     });
 
     var t = test.TopicTest.create();
@@ -81,7 +81,7 @@ describe('topics', function() {
       topics: [
         {
           name: 'foo',
-          topics: [ 'bar', { name: 'baz' } ]
+          topics: ['bar', {name: 'baz'}]
         }
       ]
     });

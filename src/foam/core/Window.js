@@ -106,6 +106,6 @@ foam.CLASS({
 
 // Replace top-level Context with one which includes Window's exports.
 foam.__context__ = foam.core.Window.create(
-  { window: global },
+  {window: global},
   foam.__context__
 ).__subContext__;

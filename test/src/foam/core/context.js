@@ -131,7 +131,7 @@ describe('Context object', function() {
       ]
     });
 
-    var obj = SomeObject.create({ a: 12 });
+    var obj = SomeObject.create({a: 12});
 
     sub = named.createSubContext({
       a: obj.a$

@@ -30,10 +30,10 @@ describe('ArrayDAO', function() {
     });
 
     people = [
-      test.Person.create({ id: 1, name: 'Kevin' }),
-      test.Person.create({ id: 2, name: 'Adam' }),
-      test.Person.create({ id: 3, name: 'Braden' }),
-      test.Person.create({ id: 4, name: 'Jackson' })
+      test.Person.create({id: 1, name: 'Kevin'}),
+      test.Person.create({id: 2, name: 'Adam'}),
+      test.Person.create({id: 3, name: 'Braden'}),
+      test.Person.create({id: 4, name: 'Jackson'})
     ];
   });
 
@@ -42,7 +42,7 @@ describe('ArrayDAO', function() {
   });
 
   it('returns an empty result when freshly created', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     dao.select().then(function(sink) {
       expect(sink).toBeDefined();
       expect(sink.array).toEqual([]);
@@ -51,7 +51,7 @@ describe('ArrayDAO', function() {
   });
 
   it('accepts put()s', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     Promise.all(people.map(dao.put.bind(dao))).then(function() {
       return dao.select();
     }).then(function(sink) {
@@ -65,7 +65,7 @@ describe('ArrayDAO', function() {
   });
 
   it('handles remove()', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     Promise.all(people.map(dao.put.bind(dao))).then(function() {
       return dao.select();
     }).then(function(sink) {
@@ -85,7 +85,7 @@ describe('ArrayDAO', function() {
   });
 
   it('returns values on find()', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     Promise.all(people.map(dao.put.bind(dao))).then(function() {
       return dao.find(2);
     }).then(function(obj) {
@@ -95,7 +95,7 @@ describe('ArrayDAO', function() {
   });
 
   it('returns null on a failed find()', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     Promise.all(people.map(dao.put.bind(dao))).then(function() {
       return dao.find(8);
     }).then(function(obj) {
@@ -105,9 +105,9 @@ describe('ArrayDAO', function() {
   });
 
   it('updates on put() if IDs match', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     Promise.all(people.map(dao.put.bind(dao))).then(function() {
-      var p = test.Person.create({ id: 2, name: 'AdamVY' });
+      var p = test.Person.create({id: 2, name: 'AdamVY'});
       return dao.put(p);
     }).then(function() {
       return dao.find(2);
@@ -119,7 +119,7 @@ describe('ArrayDAO', function() {
   });
 
   it('empties itself on removeAll()', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     Promise.all(people.map(dao.put.bind(dao))).then(function() {
       return dao.select();
     }).then(function(sink) {
@@ -134,14 +134,14 @@ describe('ArrayDAO', function() {
   });
 
   it('uses your sink if you provide one', function(done) {
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     var putCalls = 0;
     var eofCalled = false;
 
     foam.CLASS({
       package: 'test',
       name: 'Sink',
-      implements: [ 'foam.dao.Sink' ],
+      implements: ['foam.dao.Sink'],
       methods: [
         function put() { putCalls++; },
         function eof() { eofCalled = true; }
@@ -160,8 +160,8 @@ describe('ArrayDAO', function() {
   });
 
   it('succeeds when removing an unknown item', function(done) {
-    var newPerson = test.Person.create({ id: 8, name: 'Alex' });
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var newPerson = test.Person.create({id: 8, name: 'Alex'});
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     Promise.all(people.map(dao.put.bind(dao))).then(function() {
       return dao.remove(newPerson);
     }).then(function() {
@@ -174,7 +174,7 @@ describe('ArrayDAO', function() {
 
   it('publishes onData.put on each put', function(done) {
     var puts = 0;
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     dao.onData.put.sub(function() { puts++; });
     expect(puts).toBe(0);
 
@@ -198,7 +198,7 @@ describe('ArrayDAO', function() {
 
   it('publishes onData.remove on each remove', function(done) {
     var removes = 0;
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     dao.onData.remove.sub(function() { removes++; });
     expect(removes).toBe(0);
 
@@ -222,7 +222,7 @@ describe('ArrayDAO', function() {
 
   it('publishes onData.reset when the array is replaced', function(done) {
     var resets = 0;
-    var dao = foam.dao.ArrayDAO.create({ of: 'test.Person' });
+    var dao = foam.dao.ArrayDAO.create({of: 'test.Person'});
     dao.onData.reset.sub(function() { resets++; });
     expect(resets).toBe(0);
 

@@ -21,7 +21,7 @@
   Ex.
   foam.CLASS({
     name: 'Alarm',
-    topics: [ 'ring' ]
+    topics: ['ring']
   });
 
   then doing:
@@ -66,7 +66,7 @@ foam.CLASS({
       name: 'topics',
       adaptArrayElement: function(o) {
         return typeof o === 'string' ?
-            foam.core.Topic.create({ name: o }, this) :
+            foam.core.Topic.create({name: o}, this) :
             foam.core.Topic.create(o, this);
       }
     }
@@ -129,7 +129,7 @@ foam.CLASS({
       name: 'topics',
       adaptArrayElement: function(o) {
         return typeof o === 'string'        ?
-            foam.core.Topic.create({ name: o }) :
+            foam.core.Topic.create({name: o}) :
             foam.core.Topic.create(o);
       }
     }
@@ -138,5 +138,5 @@ foam.CLASS({
 
 foam.CLASS({
   refines: 'foam.core.FObject',
-  topics: [ 'propertyChange' ]
+  topics: ['propertyChange']
 });

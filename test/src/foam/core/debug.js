@@ -27,11 +27,11 @@ global.afterAll(function() {
 /* jshint laxcomma:true */
 // jscs:disable
 function makeTestFn() {
-  foam.CLASS({ name: 'TypeA' });
-  foam.CLASS({ name: 'TypeB' });
-  foam.CLASS({ name: 'TypeBB', extends: 'TypeB' });
-  foam.CLASS({ name: 'TypeC', package: 'pkg' });
-  foam.CLASS({ name: 'RetType' });
+  foam.CLASS({name: 'TypeA'});
+  foam.CLASS({name: 'TypeB'});
+  foam.CLASS({name: 'TypeBB', extends: 'TypeB'});
+  foam.CLASS({name: 'TypeC', package: 'pkg'});
+  foam.CLASS({name: 'RetType'});
   return function test(/* TypeA */ paramA, /*TypeB=*/ paramB
       , /* pkg.TypeC*/ paramC, noType /* RetType */ ) {
     return (global.RetType.create());
@@ -253,7 +253,7 @@ describe('Argument.validate', function() {
     expect(function() { params[2].validate(function() {}); }).not.toThrow();
     expect(function() { params[3].validate({}); }).not.toThrow();
     expect(function() { params[4].validate(86); }).not.toThrow();
-    expect(function() { params[5].validate([ 'hello' ]); }).not.toThrow();
+    expect(function() { params[5].validate(['hello']); }).not.toThrow();
   });
   it('rejects wrong primitive types', function() {
     var params = foam.Function.args(makePrimitiveTestFn());
@@ -380,11 +380,11 @@ describe('foam.Function.typeCheck', function() {
   });
 
   it('accepts explicit arguments list', function() {
-    var args = [ foam.core.Argument.create({
+    var args = [foam.core.Argument.create({
       name: 'str',
       typeName: 'String',
       index: 0
-    }) ];
+    })];
 
     var rfn = foam.Function
       .typeCheck(function(/* Number */ num) { return 1; }, args);
@@ -434,7 +434,7 @@ describe('Method type checking', function() {
   });
   it('ignores undefined methods', function() {
     var capture = global.captureWarn();
-    var m = foam.core.Method.create({ name: 'undefCode', code: null });
+    var m = foam.core.Method.create({name: 'undefCode', code: null});
     expect(m.code).toBe(null);
     capture();
   });
@@ -503,7 +503,7 @@ describe('installModel validation', function() {
       package: 'test',
       name: 'Parent',
       properties: [
-        { class: 'Int', name: 'foo' }
+        {class: 'Int', name: 'foo'}
       ]
     });
 
@@ -512,7 +512,7 @@ describe('installModel validation', function() {
       name: 'Child',
       extends: 'test.Parent',
       properties: [
-        { class: 'String', name: 'foo' }
+        {class: 'String', name: 'foo'}
       ]
     });
 
@@ -527,7 +527,7 @@ describe('installModel validation', function() {
     foam.CLASS({
       package: 'test',
       name: 'Parent',
-      properties: [ 'foo' ]
+      properties: ['foo']
     });
     expect(function() {
       foam.CLASS({
@@ -546,7 +546,7 @@ describe('installModel validation', function() {
       foam.CLASS({
         package: 'test',
         name: 'Child',
-        properties: [ 'foo' ],
+        properties: ['foo'],
         methods: [
           function foo() {}
         ]

@@ -52,9 +52,9 @@ describe('String', function() {
     expect(p.string).toBe('42');
   });
   it('toString()s objects', function() {
-    p.string = { toString: function() {
+    p.string = {toString: function() {
       return 'You called toString!';
-    } };
+    }};
     expect(p.string).toBe('You called toString!');
   });
   // jscs:disable
@@ -67,7 +67,7 @@ string
   });
   // jscs:enable
   it('defaults to empty string for unsupported values', function() {
-    p.string = { toString: null };
+    p.string = {toString: null};
     expect(p.string).toBe('');
   });
 

@@ -25,7 +25,7 @@ foam.CLASS({
   extends: 'foam.core.property.AxiomArray',
 
   properties: [
-    [ 'of', 'Property' ],
+    ['of', 'Property'],
     {
       /**
        * Specialized adaptArrayElement that handles the many flavours of
@@ -37,11 +37,11 @@ foam.CLASS({
           Properties can be defined using three formats:
           1. Short-form String:  'firstName' or 'sex'
 
-          2. Medium-form Array:  [ 'firstName', 'John' ] or [ 'sex', 'Male' ]
+          2. Medium-form Array:  ['firstName', 'John'] or ['sex', 'Male']
              The first element of the array is the name and the second is the
              default value.
 
-          3. Long-form JSON:     { class: 'String', name: 'sex', value: 'Male' }
+          3. Long-form JSON:     {class: 'String', name: 'sex', value: 'Male'}
              The long-form will support many options, but only 'name' is
              mandatory.
          */

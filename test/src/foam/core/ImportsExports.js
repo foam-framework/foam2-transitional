@@ -35,7 +35,7 @@ describe('imports exports', function() {
       ]
     });
 
-    var e = Exporter.create({ a: 100 });
+    var e = Exporter.create({a: 100});
     var i = Importer.create(null, e);
 
     expect(i.a).toBe(100);
@@ -157,7 +157,7 @@ describe('imports exports', function() {
       ]
     });
 
-    var e = Exporter.create({ a: 1 });
+    var e = Exporter.create({a: 1});
 
     var i = Importer.create(null, e);
 
@@ -247,8 +247,8 @@ describe('imports exports', function() {
       ]
     });
 
-    var context = foam.createSubContext({ a: 12 });
-    var obj = ImporterExporter.create({ someProperty: 'hello' }, context);
+    var context = foam.createSubContext({a: 12});
+    var obj = ImporterExporter.create({someProperty: 'hello'}, context);
 
     expect(obj.a).toBe(12);
     expect(obj.__subContext__.someProperty$.get()).toBe('hello');
@@ -335,7 +335,7 @@ describe('imports exports validation', function() {
   it('__subContext__ not settable', function() {
     foam.CLASS({
       name: 'Exporter',
-      exports: [ 'as abc' ]
+      exports: ['as abc']
     });
 
     var obj = Exporter.create();

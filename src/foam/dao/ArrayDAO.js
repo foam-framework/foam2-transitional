@@ -24,10 +24,10 @@
  * put(), remove(), find() and removeAll().
  *
  * <pre>
- * var dao = foam.dao.ArrayDAO.create({ of: 'example.MyModel' });
+ * var dao = foam.dao.ArrayDAO.create({of: 'example.MyModel'});
  * Promise.all(
- *   dao.put(example.MyModel.create({ foo: 7 })),
- *   dao.put(example.MyModel.create({ foo: 9 }))
+ *   dao.put(example.MyModel.create({foo: 7})),
+ *   dao.put(example.MyModel.create({foo: 9}))
  * ).then(function() {
  *   return dao.select();
  * }).then(function(arraySink) {
@@ -38,7 +38,7 @@
 foam.CLASS({
   package: 'foam.dao',
   name: 'ArrayDAO',
-  implements: [ 'foam.dao.DAO' ],
+  implements: ['foam.dao.DAO'],
   //extends: 'foam.dao.AbstractDAO',
 
   requires: [
@@ -48,7 +48,7 @@ foam.CLASS({
   topics: [
     {
       name: 'onData',
-      topics: [ 'put', 'remove', 'reset' ]
+      topics: ['put', 'remove', 'reset']
     }
   ],
 

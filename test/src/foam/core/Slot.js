@@ -25,7 +25,7 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj = Abc.create({ a: 1 });
+    var obj = Abc.create({a: 1});
     var slot = obj.a$;
 
     expect(slot.get()).toBe(1);
@@ -50,9 +50,9 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Abc.create({ a: 2 });
+    var obj2 = Abc.create({a: 2});
     var slot2 = obj2.a$;
 
     expect(slot1.get()).toBe(1);
@@ -86,9 +86,9 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Abc.create({ a: 2 });
+    var obj2 = Abc.create({a: 2});
     var slot2 = obj2.a$;
 
     expect(slot1.get()).toBe(1);
@@ -121,9 +121,9 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Abc.create({ a: 2 });
+    var obj2 = Abc.create({a: 2});
     var slot2 = obj2.a$;
 
 
@@ -158,11 +158,11 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Abc.create({ a: 2 });
+    var obj2 = Abc.create({a: 2});
     var slot2 = obj2.a$;
-    var obj3 = Abc.create({ a: 3 });
+    var obj3 = Abc.create({a: 3});
     var slot3 = obj3.a$;
 
     expect(slot1.get()).toBe(1);
@@ -217,11 +217,11 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Abc.create({ a: 2 });
+    var obj2 = Abc.create({a: 2});
     var slot2 = obj2.a$;
-    var obj3 = Abc.create({ a: 3 });
+    var obj3 = Abc.create({a: 3});
     var slot3 = obj3.a$;
 
     expect(slot1.get()).toBe(1);
@@ -286,8 +286,8 @@ describe('PropertySlot', function() {
 
     // Divergence should be caught.
     expect(function() {
-      var obj1 = Abc.create({ a: 1 });
-      var obj2 = Abc.create({ a: 2 });
+      var obj1 = Abc.create({a: 1});
+      var obj2 = Abc.create({a: 2});
       obj1.a$.relateTo(obj2.a$, function(x) { return x + 1; },
           function(x) { return x + 1; });
       obj1.a = 5;
@@ -295,8 +295,8 @@ describe('PropertySlot', function() {
 
     // In both directions.
     expect(function() {
-      var obj1 = Abc.create({ a: 1 });
-      var obj2 = Abc.create({ a: 2 });
+      var obj1 = Abc.create({a: 1});
+      var obj2 = Abc.create({a: 2});
       obj1.a$.relateFrom(obj2.a$, function(x) { return x + 1; },
           function(x) { return x + 1; });
       obj2.a = 4;
@@ -304,8 +304,8 @@ describe('PropertySlot', function() {
 
     // Setting expectUnstable should stop any feedback.
     expect(function() {
-      var obj1 = Abc.create({ a: 1 });
-      var obj2 = Abc.create({ a: 2 });
+      var obj1 = Abc.create({a: 1});
+      var obj2 = Abc.create({a: 2});
       obj1.a$.relateTo(obj2.a$, function(x) { return x + 1; },
           function(x) { return x; }, true);
       obj1.a = 3;
@@ -314,8 +314,8 @@ describe('PropertySlot', function() {
 
     // And in reverse.
     expect(function() {
-      var obj1 = Abc.create({ a: 1 });
-      var obj2 = Abc.create({ a: 2 });
+      var obj1 = Abc.create({a: 1});
+      var obj2 = Abc.create({a: 2});
       obj1.a$.relateTo(obj2.a$, function(x) { return x + 1; },
           function(x) { return x + 1; }, true);
       obj2.a = 5;
@@ -331,9 +331,9 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Abc.create({ a: 2 });
+    var obj2 = Abc.create({a: 2});
     var slot2 = obj2.a$;
 
     expect(slot1.get()).toBe(1);
@@ -363,13 +363,13 @@ describe('PropertySlot', function() {
     foam.CLASS({
       name: 'Def',
       properties: [
-        { name: 'b', adapt: function(old, nu) { return Math.ceil(nu); } }
+        {name: 'b', adapt: function(old, nu) { return Math.ceil(nu);}}
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Def.create({ b: 2 });
+    var obj2 = Def.create({b: 2});
     var slot2 = obj2.b$;
 
     expect(slot1.get()).toBe(1);
@@ -396,13 +396,13 @@ describe('PropertySlot', function() {
     foam.CLASS({
       name: 'Def',
       properties: [
-        { name: 'b', adapt: function(old, nu) { return nu > 20 ? 20 : nu; } }
+        {name: 'b', adapt: function(old, nu) { return nu > 20 ? 20 : nu;}}
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Def.create({ b: 2 });
+    var obj2 = Def.create({b: 2});
     var slot2 = obj2.b$;
 
     expect(slot1.get()).toBe(1);
@@ -441,9 +441,9 @@ describe('PropertySlot', function() {
       ]
     });
 
-    var obj1 = Abc.create({ a: 1 });
+    var obj1 = Abc.create({a: 1});
     var slot1 = obj1.a$;
-    var obj2 = Abc.create({ a: 1 });
+    var obj2 = Abc.create({a: 1});
     var slot2 = obj2.a$;
 
     expect(slot1.get()).toBe(1);
@@ -473,7 +473,7 @@ describe('ExpressionSlot', function() {
 
     var isAdult = foam.lookup('foam.core.ExpressionSlot').create({
       code: function(age) { return age >= 18; },
-      args: [ person.age$ ]
+      args: [person.age$]
     });
 
     expect(isAdult.get()).toBe(true);
@@ -501,7 +501,7 @@ describe('ExpressionSlot', function() {
             return firstName + ' ' + lastName;
           }
         },
-        [ 'count_', 0 ]
+        ['count_', 0]
       ]
     });
 
@@ -585,7 +585,7 @@ describe('ExpressionSlot', function() {
 
 describe('ConstantSlot', function() {
   it('coverage', function() {
-    var slot = foam.core.ConstantSlot.create({ value: 123 });
+    var slot = foam.core.ConstantSlot.create({value: 123});
 
     expect(slot.get()).toBe(123);
 

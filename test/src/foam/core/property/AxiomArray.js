@@ -74,7 +74,7 @@ describe('AxiomArray', function() {
 
     // Does not mutate objects if they already are the right type.
 
-    var inner = SomeObject.create({ a: 1, b: 2 });
+    var inner = SomeObject.create({a: 1, b: 2});
     obj.objects = [
       inner
     ];

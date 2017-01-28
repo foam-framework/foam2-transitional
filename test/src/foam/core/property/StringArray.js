@@ -58,15 +58,15 @@ describe('StringArray', function() {
     expect(p.stringArray).toEqual([]);
   });
   it('accepts string in an array', function() {
-    p.stringArray = [ 'Hello', 'I see', 'Well' ];
-    expect(p.stringArray).toEqual([ 'Hello', 'I see', 'Well' ]);
+    p.stringArray = ['Hello', 'I see', 'Well'];
+    expect(p.stringArray).toEqual(['Hello', 'I see', 'Well']);
   });
   it('converts elements to strings', function() {
     var d = new Date();
     var golden = '' + d;
 
     p.stringArray = [
-      { a: 1 },
+      {a: 1},
       2,
       true,
       d,

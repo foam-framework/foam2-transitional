@@ -161,7 +161,7 @@ describe('parsers', function() {
       var p = seqAt(1, '"', repeatUntil(anyChar(), '"'));
       var res = p.parse(mkStream('"abcd"'));
       expect(res).toBeDefined();
-      expect(res.value).toEqual([ 'a', 'b', 'c', 'd' ]);
+      expect(res.value).toEqual(['a', 'b', 'c', 'd']);
 
       res = p.parse(mkStream('""'));
       expect(res).toBeDefined();
@@ -176,7 +176,7 @@ describe('parsers', function() {
         function() {
       var ps = parser.parse(mkStream('abcdefg'));
       expect(ps).toBeDefined();
-      expect(ps.value).toEqual([ 'ab', 'c', 'DEF' ]);
+      expect(ps.value).toEqual(['ab', 'c', 'DEF']);
       expect(ps.head).toBe('g');
     });
 
@@ -192,7 +192,7 @@ describe('parsers', function() {
     });
 
     it('should handle empty args correctly', function() {
-      var ps = foam.parse.Sequence.create({ args: null }).parse(mkStream(''));
+      var ps = foam.parse.Sequence.create({args: null}).parse(mkStream(''));
       expect(ps).toBeDefined();
       expect(ps.value).toEqual([]);
     });
@@ -220,14 +220,14 @@ describe('parsers', function() {
     it('should parse its argument if possible', function() {
       var ps = parser.parse(mkStream('abcdefg'));
       expect(ps).toBeDefined();
-      expect(ps.value).toEqual([ 'abc', 'DEF' ]);
+      expect(ps.value).toEqual(['abc', 'DEF']);
       expect(ps.head).toBe('g');
     });
 
     it('should succeed (and return null) if its parser fails', function() {
       var ps = parser.parse(mkStream('defg'));
       expect(ps).toBeDefined();
-      expect(ps.value).toEqual([ null, 'DEF' ]);
+      expect(ps.value).toEqual([null, 'DEF']);
       expect(ps.head).toBe('g');
     });
   });
@@ -289,7 +289,7 @@ describe('parsers', function() {
 
     it('should include other rules in the grammar by name', function() {
       var res = grammar.parseString('abc!');
-      expect(res).toEqual([ 'abc', '!' ]);
+      expect(res).toEqual(['abc', '!']);
     });
 
     it('should error and fail parsing when a symbol is unknown', function() {
@@ -345,7 +345,7 @@ describe('parsers', function() {
       it('should parse as many repetitions as possible', function() {
         var ps = repeat(notChars(';')).parse(mkStream('abc;'));
         expect(ps).toBeDefined();
-        expect(ps.value).toEqual([ 'a', 'b', 'c' ]);
+        expect(ps.value).toEqual(['a', 'b', 'c']);
         expect(ps.head).toBe(';');
       });
 
@@ -362,7 +362,7 @@ describe('parsers', function() {
             function() {
           var ps = parser.parse(mkStream('abc;'));
           expect(ps).toBeDefined();
-          expect(ps.value).toEqual([ 'a', 'b', 'c' ]);
+          expect(ps.value).toEqual(['a', 'b', 'c']);
           expect(ps.head).toBe(';');
         });
 
@@ -377,7 +377,7 @@ describe('parsers', function() {
       it('should parse as many repetitions as possible', function() {
         var ps = repeat(notChars(',;'), literal(',')).parse(mkStream('a,b,c;'));
         expect(ps).toBeDefined();
-        expect(ps.value).toEqual([ 'a', 'b', 'c' ]);
+        expect(ps.value).toEqual(['a', 'b', 'c']);
         expect(ps.head).toBe(';');
       });
 
@@ -395,7 +395,7 @@ describe('parsers', function() {
             function() {
           var ps = parser.parse(mkStream('a,b,c;'));
           expect(ps).toBeDefined();
-          expect(ps.value).toEqual([ 'a', 'b', 'c' ]);
+          expect(ps.value).toEqual(['a', 'b', 'c']);
           expect(ps.head).toBe(';');
         });
 
@@ -412,7 +412,7 @@ describe('parsers', function() {
       it('should parse as many repetitions as possible', function() {
         var ps = plus(notChars(';')).parse(mkStream('abc;'));
         expect(ps).toBeDefined();
-        expect(ps.value).toEqual([ 'a', 'b', 'c' ]);
+        expect(ps.value).toEqual(['a', 'b', 'c']);
         expect(ps.head).toBe(';');
       });
 
@@ -426,7 +426,7 @@ describe('parsers', function() {
       it('should parse as many repetitions as possible', function() {
         var ps = plus(notChars(',;'), literal(',')).parse(mkStream('a,b,c;'));
         expect(ps).toBeDefined();
-        expect(ps.value).toEqual([ 'a', 'b', 'c' ]);
+        expect(ps.value).toEqual(['a', 'b', 'c']);
         expect(ps.head).toBe(';');
       });
 
@@ -491,12 +491,12 @@ describe('parser infrastructure', function() {
       var ps = foam.parse.StringPS.create();
       expect(ps.str).toBeUndefined();
       ps.setString('some string');
-      expect(ps.str).toEqual([ 'some string' ]);
+      expect(ps.str).toEqual(['some string']);
       expect(ps.value).toBe(null);
 
       ps.pos = 8;
       ps.setString('another string');
-      expect(ps.str).toEqual([ 'another string' ]);
+      expect(ps.str).toEqual(['another string']);
       expect(ps.pos).toBe(0);
     });
   });
@@ -583,7 +583,7 @@ describe('parser infrastructure', function() {
       var f = function() {};
       f.toString = function() { return 'This is not a function.'; };
       expect(function() {
-        var g = foam.parse.Grammar.create({ symbols: f });
+        var g = foam.parse.Grammar.create({symbols: f});
       }).toThrow();
     });
 
@@ -592,8 +592,8 @@ describe('parser infrastructure', function() {
       var lit = foam.parse.Parsers.create().literal;
       var g = foam.parse.Grammar.create({
         symbols: [
-          foam.parse.PSymbol.create({ name: 'START', parser: lit('a') }),
-          foam.parse.PSymbol.create({ name: 'START', parser: lit('b') })
+          foam.parse.PSymbol.create({name: 'START', parser: lit('a')}),
+          foam.parse.PSymbol.create({name: 'START', parser: lit('b')})
         ]
       });
 

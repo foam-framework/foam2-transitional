@@ -87,6 +87,23 @@ foam.CLASS({
           ! this.name.startsWith('__'),
           'Illegal Property Name: Names beginning with double underscore ' +
           '"__" are reserved: ', this.name);
+
+      var mName = model.id ? ( model.id + '.' ) : ( model.refines + '.' );
+
+      var es = foam.core.Property.SHADOW_MAP;
+      for ( var key in es ) {
+        var e = es[key];
+        if ( this[key] ) {
+          for ( var j = 0 ; j < e.length ; j++ ) {
+            if ( this.hasOwnProperty(e[j]) ) {
+              console.warn(
+                  'Property ' + mName +
+                  this.name + ' "' + e[j] +
+                  '" hidden by "' + key + '"');
+            }
+          }
+        }
+      }
     }
   ]
 });

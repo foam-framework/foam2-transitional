@@ -102,10 +102,12 @@ foam.INTERFACE({
     // No types are given here, so that they can be Unsafe properties.
     {
       /** Index into the input stream. */
+      class: 'Unsafe',
       name: 'pos'
     },
     {
       /** The input string, wrapped in an array to simulate a pointer. */
+      class: 'Unsafe',
       name: 'str'
     },
     {
@@ -158,7 +160,7 @@ foam.INTERFACE({
 foam.CLASS({
   package: 'foam.parse',
   name: 'StringPS',
-  implements: [ 'foam.parse.PStream' ],
+  implements: ['foam.parse.PStream'],
 
   properties: [
     {
@@ -264,7 +266,7 @@ foam.LIB({
        * @param {any} x The input to be coerced to a parser.
        * @return {Parser=} The parser, or undefined on failure.
        */
-      return typeof x === 'string' ? foam.parse.Literal.create({ literal: x }) :
+      return typeof x === 'string' ? foam.parse.Literal.create({literal: x}) :
           undefined;
     },
     function isInstance(obj) {
@@ -290,8 +292,8 @@ foam.CLASS({
   extends: 'FObjectArray',
 
   properties: [
-    [ 'of', 'foam.parse.Parser' ],
-    [ 'adapt', function(_, a) {
+    ['of', 'foam.parse.Parser'],
+    ['adapt', function(_, a) {
         if ( ! a ) return [];
         var b = new Array(a.length);
         for ( var i = 0; i < a.length; i++ ) {
@@ -348,7 +350,7 @@ foam.INTERFACE({
 foam.CLASS({
   package: 'foam.parse',
   name: 'Literal',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -389,7 +391,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'LiteralIC',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -439,7 +441,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'Alternate',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -483,7 +485,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'Sequence',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -520,7 +522,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'String',
-  implements: [ 'foam.parse.Parser', 'foam.parse.ParserDecorator' ],
+  implements: ['foam.parse.Parser', 'foam.parse.ParserDecorator'],
   methods: [
     function parse(ps, obj) {
       /**
@@ -541,7 +543,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'SequenceAt',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -591,7 +593,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'Optional',
-  implements: [ 'foam.parse.Parser', 'foam.parse.ParserDecorator' ],
+  implements: ['foam.parse.Parser', 'foam.parse.ParserDecorator'],
 
   methods: [
     function parse(ps, obj) {
@@ -614,9 +616,9 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'AnyChar',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
-  axioms: [ foam.pattern.Singleton.create() ],
+  axioms: [foam.pattern.Singleton.create()],
 
   methods: [
     function parse(ps) {
@@ -637,7 +639,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'NotChars',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -669,7 +671,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'Range',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -720,7 +722,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'Repeat',
-  implements: [ 'foam.parse.Parser', 'foam.parse.ParserDecorator' ],
+  implements: ['foam.parse.Parser', 'foam.parse.ParserDecorator'],
 
   properties: [
     {
@@ -769,7 +771,7 @@ foam.CLASS({
   extends: 'foam.parse.Repeat',
 
   properties: [
-    [ 'minimum', 1 ]
+    ['minimum', 1]
   ]
 });
 
@@ -843,7 +845,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'RepeatUntil',
-  implements: [ 'foam.parse.Parser', 'foam.parse.ParserDecorator' ],
+  implements: ['foam.parse.Parser', 'foam.parse.ParserDecorator'],
 
   properties: [
     {
@@ -880,7 +882,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'ParserWithAction',
-  implements: [ 'foam.parse.Parser', 'foam.parse.ParserDecorator' ],
+  implements: ['foam.parse.Parser', 'foam.parse.ParserDecorator'],
 
   properties: [
     {
@@ -910,7 +912,7 @@ foam.CLASS({
 foam.CLASS({
   package: 'foam.parse',
   name: 'Symbol',
-  implements: [ 'foam.parse.Parser' ],
+  implements: ['foam.parse.Parser'],
 
   properties: [
     {
@@ -944,7 +946,7 @@ foam.CLASS({
   package: 'foam.parse',
   name: 'Parsers',
 
-  axioms: [ foam.pattern.Singleton.create() ],
+  axioms: [foam.pattern.Singleton.create()],
 
   methods: [
     function seq(parsers) {

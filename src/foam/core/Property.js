@@ -203,10 +203,25 @@ foam.CLASS({
         'Property names must not end with $');
 
       var prop = this;
-      var superProp = c.__proto__.getAxiomByName(prop.name);
+      var superProp = c.getSuperAxiomByName(prop.name);
 
       if ( superProp && foam.core.Property.isInstance(superProp) ) {
         prop = superProp.createChildProperty_(prop);
+
+        // If properties would be shadowed by superProp properties, then
+        // clear the shadowing property since the new value should
+        // take precedence since it was set later.
+        var es = foam.core.Property.SHADOW_MAP || {};
+        for ( var key in es ) {
+          var e = es[key];
+          for ( var j = 0 ; j < e.length ; j++ ) {
+            if ( this.hasOwnProperty(e[j]) && superProp[key] ) {
+              prop.clearProperty(key);
+              break;
+            }
+          }
+        }
+
         c.axiomMap_[prop.name] = prop;
       }
 

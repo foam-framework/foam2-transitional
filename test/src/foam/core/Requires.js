@@ -24,7 +24,7 @@ describe('Requires', function() {
       properties: [
         'owner',
         'balance',
-        [ 'interestRate', 0.008 ]
+        ['interestRate', 0.008]
       ]
     });
 
@@ -33,7 +33,7 @@ describe('Requires', function() {
       name: 'SavingsAccount',
       extends: 'bank.Account',
       properties: [
-        [ 'interestRate', 0.012 ]
+        ['interestRate', 0.012]
       ]
     });
 
@@ -50,18 +50,18 @@ describe('Requires', function() {
       ],
 
       properties: [
-        [ 'owner', 'me' ],
-        [ 'transitNumber', '003' ],
+        ['owner', 'me'],
+        ['transitNumber', '003'],
         {
           name: 'chequeing',
           factory: function() {
-            return this.Account.create({ owner: this.owner, balance: 200 });
+            return this.Account.create({owner: this.owner, balance: 200});
           }
         },
         {
           name: 'savings',
           factory: function() {
-            return this.SAccount.create({ owner: this.owner, balance: 300 });
+            return this.SAccount.create({owner: this.owner, balance: 300});
           }
         }
       ]
@@ -71,7 +71,7 @@ describe('Requires', function() {
       package: 'test',
       name: 'BankTest2',
       requires: [
-        { name: 'ACT', path: 'bank.Account' }
+        {name: 'ACT', path: 'bank.Account'}
       ],
       properties: [
         {

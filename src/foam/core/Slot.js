@@ -256,7 +256,7 @@ foam.CLASS({
   foam.CLASS({name: 'Person', properties: ['fname', 'lname']});
   var p = Person.create({fname: 'John', lname: 'Smith'});
   var e = foam.core.ExpressionSlot.create({
-    args: [ p.fname$, p.lname$ ],
+    args: [p.fname$, p.lname$],
     code: function(f, l) { return f + ' ' + l; }
   });
   log(e.get());
@@ -271,7 +271,7 @@ foam.CLASS({
    > [object Object] propertyChange value [object Object]
    > Steve Jones
 
-  var p = foam.CLASS({name: 'Person', properties: [ 'f', 'l' ]}).create({f:'John', l: 'Doe'});
+  var p = foam.CLASS({name: 'Person', properties: ['f', 'l']}).create({f:'John', l: 'Doe'});
   var e = foam.core.ExpressionSlot.create({
     obj: p,
     code: function(f, l) { return f + ' ' + l; }

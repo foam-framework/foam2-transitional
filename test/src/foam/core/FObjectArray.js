@@ -20,7 +20,7 @@ describe('FObjectArray', function() {
   foam.CLASS({
     package: 'test',
     name: 'Payload',
-    properties: [ 'foo' ]
+    properties: ['foo']
   });
 
   it('it defaults to empty array', function() {
@@ -54,12 +54,12 @@ describe('FObjectArray', function() {
       ]
     });
 
-    var payload = test.Payload.create({ foo: 7 });
+    var payload = test.Payload.create({foo: 7});
 
     var t = test.FOATest.create({
       arr: [
-        { foo: 2 },
-        { foo: 'bar' },
+        {foo: 2},
+        {foo: 'bar'},
         payload
       ]
     });

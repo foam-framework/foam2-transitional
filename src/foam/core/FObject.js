@@ -44,7 +44,7 @@ foam.LIB({
     // axioms. Storing internal data in private_ instead of on the
     // class directly avoids name conflicts with public features of
     // the class.
-    private_:  { axiomCache: {} }
+    private_:  {axiomCache: {}}
   },
 
   methods: [
@@ -97,7 +97,7 @@ foam.LIB({
 
         cls.prototype = Object.create(this.prototype);
         cls.axiomMap_ = Object.create(this.axiomMap_);
-        cls.private_  = { axiomCache: {} };
+        cls.private_  = {axiomCache: {}};
 
         return cls;
       };
@@ -147,7 +147,7 @@ foam.LIB({
        * the more efficient installAxioms() method rather than this.
        * @param {Object} a
        */
-      this.installAxioms([ a ]);
+      this.installAxioms([a]);
     },
 
     function isInstance(o) {
@@ -246,7 +246,7 @@ foam.LIB({
     // NOP, is replaced if debug.js is loaded
     function validate() { },
 
-    function toString() { return this.name + 'Class'; },
+    function toString() {return this.name + 'Class';},
 
     function installModel(m) {
       /**
@@ -287,7 +287,7 @@ foam.LIB({
         for ( var i = 0 ; i < m.methods.length ; i++ ) {
           var a = m.methods[i];
           if ( foam.Function.isInstance(a) ) {
-            m.methods[i] = a = { name: a.name, code: a };
+            m.methods[i] = a = {name: a.name, code: a};
           }
           if ( foam.core.Method ) {
             foam.assert(a.cls_ !== foam.core.Method,
@@ -306,11 +306,11 @@ foam.LIB({
         Properties can be defined using three formats:
         1. Short-form String:  'firstName' or 'sex'
 
-        2. Medium-form Array:  [ 'firstName', 'John' ] or [ 'sex', 'Male' ]
+        2. Medium-form Array:  ['firstName', 'John'] or ['sex', 'Male']
            The first element of the array is the name and the second is the
            default value.
 
-        3. Long-form JSON:     { class: 'String', name: 'sex', value: 'Male' }
+        3. Long-form JSON:     {class: 'String', name: 'sex', value: 'Male'}
            The long-form will support many options (many of which are defined
            in Property.js), but only 'name' is mandatory.
        */
@@ -319,9 +319,9 @@ foam.LIB({
           var a = m.properties[i];
 
           if ( Array.isArray(a) ) {
-            m.properties[i] = a = { name: a[0], value: a[1] };
+            m.properties[i] = a = {name: a[0], value: a[1]};
           } else if ( foam.String.isInstance(a) ) {
-            m.properties[i] = a = { name: a };
+            m.properties[i] = a = {name: a};
           }
 
           var type = foam.lookup(a.class, true) || foam.core.Property;
@@ -478,7 +478,7 @@ foam.CLASS({
        * to show why we are using plain javascript objects rather than
        * modeled objects for this structure.
        */
-      return { next: null };
+      return {next: null};
     },
 
     function listeners_() {
@@ -519,7 +519,7 @@ foam.CLASS({
           case 6: l(s, a[0], a[1], a[2], a[3], a[4], a[5]); break;
           case 7: l(s, a[0], a[1], a[2], a[3], a[4], a[5], a[6]); break;
           case 8: l(s, a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7]); break;
-          default: l.apply(l, [ s ].concat(Array.from(a)));
+          default: l.apply(l, [s].concat(Array.from(a)));
         }
         count++;
       }
@@ -580,14 +580,14 @@ foam.CLASS({
       // FUTURE: benchmark
       switch ( arguments.length ) {
         case 0:  return this.pub_([]);
-        case 1:  return this.pub_([ a1 ]);
-        case 2:  return this.pub_([ a1, a2 ]);
-        case 3:  return this.pub_([ a1, a2, a3 ]);
-        case 4:  return this.pub_([ a1, a2, a3, a4 ]);
-        case 5:  return this.pub_([ a1, a2, a3, a4, a5 ]);
-        case 6:  return this.pub_([ a1, a2, a3, a4, a5, a6 ]);
-        case 7:  return this.pub_([ a1, a2, a3, a4, a5, a6, a7 ]);
-        case 8:  return this.pub_([ a1, a2, a3, a4, a5, a6, a7, a8 ]);
+        case 1:  return this.pub_([a1]);
+        case 2:  return this.pub_([a1, a2]);
+        case 3:  return this.pub_([a1, a2, a3]);
+        case 4:  return this.pub_([a1, a2, a3, a4]);
+        case 5:  return this.pub_([a1, a2, a3, a4, a5]);
+        case 6:  return this.pub_([a1, a2, a3, a4, a5, a6]);
+        case 7:  return this.pub_([a1, a2, a3, a4, a5, a6, a7]);
+        case 8:  return this.pub_([a1, a2, a3, a4, a5, a6, a7, a8]);
         default: return this.pub_(arguments);
       }
     },
@@ -651,7 +651,7 @@ foam.CLASS({
       }
 
       var node = {
-        sub:  { src: this },
+        sub:  {src: this},
         next: listeners.next,
         prev: listeners,
         l:    l
@@ -692,7 +692,7 @@ foam.CLASS({
       if ( typeof obj === 'function' ) {
         return foam.core.ExpressionSlot.create(
             arguments.length === 1 ?
-                { code: obj, obj: this } :
+                {code: obj, obj: this} :
                 {
                   code: obj,
                   obj: this,

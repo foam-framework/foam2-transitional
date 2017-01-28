@@ -30,7 +30,7 @@ describe('Inner classes', function() {
         }
       ],
 
-      properties: [ 'name', 'age', 'result' ],
+      properties: ['name', 'age', 'result'],
 
       methods: [
         function sayHello() {
@@ -48,7 +48,7 @@ describe('Inner classes', function() {
 
   it('support properties and methods normally', function() {
     var p = test.Person.create();
-    var self = p.InnerSelf.create({ me: 42, myself: 'me', i: 'plusplus' });
+    var self = p.InnerSelf.create({me: 42, myself: 'me', i: 'plusplus'});
     expect(self.me).toBe(42);
     expect(self.myself).toBe('me');
     expect(self.i).toBe('plusplus');
@@ -59,7 +59,7 @@ describe('Inner classes', function() {
       package: 'test',
       name: 'InnerClassTest2',
       classes: [
-        foam.core.Model.create({ name: 'TheInnerClass', properties: [ 'a' ] })
+        foam.core.Model.create({name: 'TheInnerClass', properties: ['a']})
       ]
     });
 
@@ -76,7 +76,7 @@ describe('Inner classes', function() {
       name: 'InnerClassTest3',
       classes: [
         foam.core.InnerClass.create({
-          model: { name: 'IC', properties: [ 'b' ] }
+          model: {name: 'IC', properties: ['b']}
         })
       ]
     });

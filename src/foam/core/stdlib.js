@@ -215,7 +215,7 @@ foam.LIB({
        * @param {String} name
        * @return {Function}
        */
-      Object.defineProperty(f, 'name', { value: name, configurable: true });
+      Object.defineProperty(f, 'name', {value: name, configurable: true});
       return f;
     },
 
@@ -281,7 +281,7 @@ foam.LIB({
       var ret = [];
       // FUTURE: Consolidate this regex with the similar one in typeChecker.
       //         see debug.js: foam.Function.typeCheck()
-      // [ ws /* anything */ ] ws [...]arg_name ws [ /* anything */ ],
+      // [ws /* anything */ ] ws [...]arg_name ws [/* anything */],
       var argMatcher = /(\s*\/\*.*?\*\/)?\s*((?:\.\.\.)?[\w_$]+)\s*(\/\*.*?\*\/)?\s*\,+/g;
       var typeMatch;
       while ( ( typeMatch = argMatcher.exec(args) ) !== null ) {
@@ -611,7 +611,7 @@ foam.LIB({
         }
         if ( j === added.length ) removed.push(a[i]);
       }
-      return { added: added, removed: removed };
+      return {added: added, removed: removed};
     },
     function equals(a, b) {
       /**

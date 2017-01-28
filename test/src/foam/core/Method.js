@@ -21,7 +21,7 @@ describe('Method', function() {
     package: 'test.method',
     name: 'Parent',
 
-    properties: [ 'calls' ],
+    properties: ['calls'],
 
     methods: [
       function bumpCalls() {
@@ -35,7 +35,7 @@ describe('Method', function() {
     name: 'Child',
     extends: 'test.method.Parent',
 
-    properties: [ 'childCalls' ],
+    properties: ['childCalls'],
 
     methods: [
       function bumpCalls() {
@@ -123,8 +123,8 @@ describe('Method', function() {
   it('Is bound when exported', function() {
     foam.CLASS({
       name: 'SomeClass',
-      properties: [ 'a' ],
-      exports: [ 'getA' ],
+      properties: ['a'],
+      exports: ['getA'],
       methods: [
         function getA() {
           return this.a;
@@ -133,7 +133,7 @@ describe('Method', function() {
     });
 
 
-    var obj = SomeClass.create({ a: 123 });
+    var obj = SomeClass.create({a: 123});
     var getA = obj.__subContext__.getA;
 
     expect(getA()).toBe(123);

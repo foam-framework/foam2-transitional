@@ -23,13 +23,13 @@
   Ex.
   foam.INTERFACE({
     name: 'SalaryI',
-    properties: [ 'salary' ]
+    properties: ['salary']
   });
 
   foam.CLASS({
     name: 'Employee',
     extends: 'Person',
-    implements: [ 'SalaryI' ]
+    implements: ['SalaryI']
   });
 </pre>
   Employee extends Person through regular inheritance, but
@@ -107,7 +107,7 @@ foam.CLASS({
       name: 'implements',
       adaptArrayElement: function(o) {
         return typeof o === 'string' ?
-          foam.core.Implements.create({ path: o }) :
+          foam.core.Implements.create({path: o}) :
           foam.core.Implements.create(o)         ;
       }
     }
